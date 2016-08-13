@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width">
+
+    <title>American Flag</title>
+    <style>
+      #flag {
+        position:relative;
+        height:400px;
+        width:600px;
+        margin: 0 auto;
+      }
+      #starHolder {
+        background-color: #3C3B6E;
+        position:absolute;
+        color:#fff;
+        padding:7px;
+      }
+      .star:first-child {
+        padding-left:0;
+      }
+      .star {
+        display:inline-block;
+        padding-left:35px;
+      }
+      .starRow {
+        margin-bottom: -4px;
+      }
+      .starRow:last-child {
+        margin-bottom: -1px;
+      }
+      .indent {
+        margin-left:21px;
+      }
+      .bar {
+        background-color:#B22234;
+        height:21px;
+      }
+      #flag .bar:nth-child(odd) {
+        background-color:#fff;
+      }
+
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        $(function() {
+            'use strict';
+
+            // Build stars
+            for (var i = 0; i < 9; i++) {
+                var numStars = 0;
+                var starRowClass = '';
+                if (i % 2) {
+                    numStars = 5;
+                    starRowClass = 'indent';
+                } else {
+                    numStars = 6;
+
+                }
+                var $starRow = $('<div class="starRow ' + starRowClass + '"></div>');
+                for (var j = 0; j < numStars; j++) {
+                    $starRow.append('<div class="star">*</div>');
+                }
+                $('#starHolder').append($starRow);
+            }
+
+            // Build bars
+            var $flag = $('#flag');
+            for (var i = 0; i < 13; i++) {
+                $flag.append('<div class="bar"></div>');
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div id="flag">
+        <div id="starHolder"></div>
+    </div>
+</body>
+
+</html>
